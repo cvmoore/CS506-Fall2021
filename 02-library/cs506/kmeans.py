@@ -2,6 +2,7 @@ from collections import defaultdict
 from math import inf
 import random
 import csv
+from random import randint
 
 
 def point_avg(points):
@@ -60,7 +61,15 @@ def generate_k(dataset, k):
     Given `data_set`, which is an array of arrays,
     return a random set of k points from the data_set
     """
-    raise NotImplementedError()
+    ans = []
+    for i in range(k):
+        new = []
+        for iterate in range(len(dataset[0])):
+            index = randint(len(dataset))
+            index2 = randint(len(dataset[index]))
+            new = new+[dataset[index][index2]]
+        ans = ans+new
+    return ans
 
 def cost_function(clustering):
     raise NotImplementedError()
