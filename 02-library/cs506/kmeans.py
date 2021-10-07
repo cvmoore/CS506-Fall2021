@@ -11,7 +11,7 @@ def point_avg(points):
     
     Returns a new point which is the center of all the points.
     """
-    return [sum(point[j] for point in points) / len(points) for j in range(len(points[0]))]
+    return [sum(point[iterate] for point in points) / len(points) for iterate in range(len(points[0]))]
 
 def update_centers(dataset, assignments):
     """
@@ -54,9 +54,8 @@ def generate_k(dataset, k):
     Given `data_set`, which is an array of arrays,
     return a random set of k points from the data_set
     """
-    indices = list(range(len(dataset)))
-    random.shuffle(indices)
-    return [dataset[i] for i in indices[:k]]
+    random.shuffle(dataset)
+    return dataset[:k]
 
 def cost_function(clustering):
     centers = {j: point_avg(clustering[j]) for j in clustering.keys()}
