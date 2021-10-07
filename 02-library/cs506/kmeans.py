@@ -80,14 +80,14 @@ def find_min_dist(point, centroids):
     return min(distance(point, centroid) for centroid in centroids)
 
 def _do_lloyds_algo(dataset, k_points):
-    assignments = assign_points(dataset, k_points)
-    old_assignments = None
-    while assignments != old_assignments:
-        new_centers = update_centers(dataset, assignments)
-        old_assignments = assignments
-        assignments = assign_points(dataset, new_centers)
+    assigned_points = assign_points(dataset, k_points)
+    old_points = None
+    while assigned_points != old_points:
+        new_centers = update_centers(dataset, assigned_points)
+        old_points = assigned_points
+        assigned_points = assign_points(dataset, new_centers)
     clustering = defaultdict(list)
-    for assignment, point in zip(assignments, dataset):
+    for assignment, point in zip(assigned_points, dataset):
         clustering[assignment].append(point)
     return clustering
 
