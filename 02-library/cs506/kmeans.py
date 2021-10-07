@@ -29,14 +29,14 @@ def assign_points(data_points, centers):
     """
     assignments = []
     for point in data_points:
-        shortest = inf  # positive infinity
-        shortest_index = 0
+        shortest = data_points[0] 
+        loc_of_shortest = 0
         for i in range(len(centers)):
             val = distance(point, centers[i])
             if val < shortest:
                 shortest = val
-                shortest_index = i
-        assignments.append(shortest_index)
+                loc_of_shortest = i
+        assignments.append(loc_of_shortest)
     return assignments
 
 
