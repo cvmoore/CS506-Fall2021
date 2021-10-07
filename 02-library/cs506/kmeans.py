@@ -95,14 +95,14 @@ def _do_lloyds_algo(dataset, k_points):
 def k_means(dataset, k):
     if k not in range(1, len(dataset)+1):
         raise ValueError("lengths must be in [1, len(dataset)]")
-    
-    k_points = generate_k(dataset, k)
-    return _do_lloyds_algo(dataset, k_points)
+    else:
+        k_points = generate_k(dataset, k)
+        return _do_lloyds_algo(dataset, k_points)
 
 
 def k_means_pp(dataset, k):
     if k not in range(1, len(dataset)+1):
         raise ValueError("lengths must be in [1, len(dataset)]")
-
-    k_points = generate_k_pp(dataset, k)
-    return _do_lloyds_algo(dataset, k_points)
+    else:
+        k_points = generate_k_pp(dataset, k)
+        return _do_lloyds_algo(dataset, k_points)
